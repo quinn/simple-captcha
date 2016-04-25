@@ -78,12 +78,11 @@ module SimpleCaptcha
         url = simple_captcha_image_url(key, options)
 
         status = 200
-        id = request.params['id']
-        captcha_hidden_field_id = simple_captch_hidden_field_id(id)
+        id = CGI::escape(request.params['id'].to_s)
 
         body = %Q{
-                    $("##{id}").attr('src', '#{url}');
-                    $("##{ captcha_hidden_field_id }").attr('value', '#{key}');
+                    $("#simple_captcha-#{id}").attr('src', '#{url}');
+                    $("#simple-captcha-hidden-field-simple_captcha-#{id}").attr('value', '#{key}');
                   }
         headers = {'Content-Type' => 'text/javascript; charset=utf-8', "Content-Disposition" => "inline; filename='captcha.js'", "Content-Length" => body.length.to_s}.merge(SimpleCaptcha.extra_response_headers)
         [status, headers, [body]]

@@ -109,7 +109,7 @@ module SimpleCaptcha #:nodoc
 
         text = options[:refresh_button_text] || I18n.t('simple_captcha.refresh_button_text', default: 'Refresh')
 
-        url = build_url(options, "/simple_captcha?id=#{simple_captcha_image_id(options)}")
+        url = build_url(options, "/simple_captcha?id=#{options[:field_value][0..10]}")
         link_to(text, url, html)
       end
 
