@@ -16,10 +16,9 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = ["README.md"]
   s.require_paths = ["lib"]
 
-  s.add_dependency 'railsties', '>= 4.1'
+  s.add_dependency 'railties', '>= 4.1'
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "capybara-mechanize"
   s.add_development_dependency "poltergeist"
   s.add_development_dependency "pry"
-
 end
